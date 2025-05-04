@@ -46,19 +46,49 @@ struct HomeView: View {
                                }
                                .frame(maxWidth: .infinity)
                                .frame(height: geo.size.height * 0.27)
-                               .background(Color.orange)
+                               .background(Color.green)
                                .clipShape(RoundedRectangle(cornerRadius: 16))
                                .ignoresSafeArea(.all)
                                
                                ScrollView(.vertical, showsIndicators: false) {
-                                   VStack(alignment: .leading) {
-                                       Text("Nimish Mothghare")
-                                       Text("Nimish Mothghare")
+                                   VStack(alignment: .center,spacing: 20) {
+                                       Text("Products Special Offers")
+                                           .font(.custom("Rockwell", size: 17))
+                                                  .padding(.horizontal, 20)
                                        
+                                       ScrollView(.horizontal, showsIndicators: false) {
+                                           HStack(spacing: 25) {
+                                               ForEach(0..<offers.count, id: \.self) { index in
+                                                   OfferCard(offers: offers[index])
+                                                       .scrollTransition { content, phase in
+                                                           content
+                                                               .opacity(phase.isIdentity ? 1 : 1)
+                                                               .scaleEffect(y: phase.isIdentity ? 1 : 0.7)
+                                                       }
+                                               }
+                                           }
+                                           .scrollTargetLayout()
+                                       }
+                                       .contentMargins(45, for: .automatic)
+                                       .scrollTargetBehavior(.viewAligned)
+                                       .offset(y: -geo.size.height * 0.06)
                                    }
                                    .padding(.top, 20)
+                                   
+                                   
+                                   VStack(alignment: .leading){
+                                       Text("Product Categories")
+                                           .font(.custom("Rockwell", size: 17))
+                                                  .padding(.horizontal, 20)
+                                                  .frame(maxWidth: .infinity, alignment: .leading)
+                                       
+                                       
+                                     
+                                   }
+                                   .offset(y: -geo.size.height * 0.09)
+
                                }
-                               .offset(y: -geo.size.height * 0.07)
+                               .offset(y: -geo.size.height * 0.08)
                            }
                        }
                        else if prop.isiPadPortrait {

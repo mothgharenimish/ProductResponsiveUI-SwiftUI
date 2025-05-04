@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct CategoriesCard: View {
+    
+    var categorytext : String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ZStack {
+            
+            Image("field-1851064_1280")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 110, height: 50)
+                .clipShape(RoundedRectangle(cornerRadius: 20.0))
+            
+            Text(categorytext)
+                .font(.custom("Rockwell", size: 24).bold())
+                .foregroundStyle(.white)
+                .padding(.horizontal, 20)
+        }
     }
 }
 
 #Preview {
-    CategoriesCard()
+    CategoriesCard(categorytext: "Kids")
 }

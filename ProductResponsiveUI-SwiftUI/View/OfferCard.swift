@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct OfferCard: View {
+    let offers : OffersModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(offers.offerImg!)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: UIScreen.main.bounds.width - 90, height: 250)
+            .clipShape(RoundedRectangle(cornerRadius: 20.0))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.white, lineWidth: 3)
+            )
+            .shadow(radius: 20)
+        
     }
 }
 
 #Preview {
-    OfferCard()
+    
+   ContentView()
 }
